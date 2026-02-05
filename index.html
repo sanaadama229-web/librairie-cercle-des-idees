@@ -12,57 +12,75 @@ body{
     background:#f4f6f8;
 }
 header{
-    background:linear-gradient(135deg,#1f2937,#111827);
+    background:linear-gradient(135deg,#0f172a,#020617);
     color:white;
-    padding:30px 15px;
+    padding:50px 20px;
     text-align:center;
 }
+header h1{
+    margin:0;
+    font-size:34px;
+}
+header p{
+    margin:10px 0;
+    opacity:0.9;
+}
 section{
-    padding:25px 15px;
+    padding:40px 20px;
 }
 h2{
-    margin-bottom:15px;
-    border-left:5px solid #25D366;
-    padding-left:10px;
+    margin-bottom:20px;
+    color:#111;
+    border-left:6px solid #22c55e;
+    padding-left:12px;
 }
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
-    gap:18px;
+    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:20px;
 }
 .card{
     background:white;
-    border-radius:14px;
+    border-radius:16px;
     overflow:hidden;
     box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    transition:transform .3s;
+}
+.card:hover{
+    transform:translateY(-6px);
 }
 .card img{
     width:100%;
-    height:220px;
+    height:260px;
     object-fit:cover;
 }
 .content{
-    padding:15px;
+    padding:16px;
+}
+.content h3{
+    margin:0 0 8px;
+    font-size:17px;
 }
 .price{
     font-weight:bold;
-    margin:8px 0;
+    margin-bottom:12px;
 }
 .btn{
     display:block;
-    background:#25D366;
-    color:white;
     text-align:center;
-    padding:10px;
-    border-radius:8px;
+    background:#22c55e;
+    color:white;
+    padding:12px;
+    border-radius:10px;
     text-decoration:none;
     font-weight:bold;
 }
 footer{
-    background:#111;
+    background:#020617;
     color:white;
     text-align:center;
-    padding:20px;
+    padding:25px;
+    margin-top:40px;
 }
 </style>
 </head>
@@ -72,55 +90,82 @@ footer{
 <header>
 <h1>Librairie le Cercle des Idées</h1>
 <p>Romans • Manuels • Développement personnel</p>
-<p>📞 WhatsApp : +226 76 59 97 01</p>
+<p>📞 WhatsApp : <strong>+226 76 59 97 01</strong></p>
 </header>
 
-<section id="books"></section>
+<!-- ROMANS -->
+<section>
+<h2>📖 Romans & Littérature</h2>
+<div class="grid">
+
+<div class="card">
+<img src="images/maimouna.jpg" alt="Maimouna">
+<div class="content">
+<h3>Maimouna</h3>
+<p class="price">1500 FCFA</p>
+<a class="btn" href="https://wa.me/22676599701?text=Bonjour,%20je%20souhaite%20commander%20Maimouna%20-%201500%20FCFA">Commander</a>
+</div>
+</div>
+
+<div class="card">
+<img src="images/etranger_albert_camus.jpg" alt="L'Étranger">
+<div class="content">
+<h3>L’Étranger – Albert Camus</h3>
+<p class="price">1500 FCFA</p>
+<a class="btn" href="https://wa.me/22676599701?text=Bonjour,%20je%20souhaite%20commander%20L'Étranger%20-%201500%20FCFA">Commander</a>
+</div>
+</div>
+
+<div class="card">
+<img src="images/le-petit-prince.jpg" alt="Le Petit Prince">
+<div class="content">
+<h3>Le Petit Prince</h3>
+<p class="price">2000 FCFA</p>
+<a class="btn" href="https://wa.me/22676599701?text=Bonjour,%20je%20souhaite%20commander%20Le%20Petit%20Prince%20-%202000%20FCFA">Commander</a>
+</div>
+</div>
+
+<div class="card">
+<img src="images/une-si-longue-lettre.jpg" alt="Une si longue lettre">
+<div class="content">
+<h3>Une si longue lettre</h3>
+<p class="price">1500 FCFA</p>
+<a class="btn" href="https://wa.me/22676599701?text=Bonjour,%20je%20souhaite%20commander%20Une%20si%20longue%20lettre%20-%201500%20FCFA">Commander</a>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- DÉVELOPPEMENT PERSONNEL -->
+<section>
+<h2>🧠 Développement personnel</h2>
+<div class="grid">
+
+<div class="card">
+<img src="images/pere-riche.jpg" alt="Père riche père pauvre">
+<div class="content">
+<h3>Père riche père pauvre</h3>
+<p class="price">3000 FCFA</p>
+<a class="btn" href="https://wa.me/22676599701?text=Bonjour,%20je%20souhaite%20commander%20Père%20riche%20père%20pauvre%20-%203000%20FCFA">Commander</a>
+</div>
+</div>
+
+<div class="card">
+<img src="images/influence-manipulation.jpg" alt="Influence et manipulation">
+<div class="content">
+<h3>Influence et manipulation</h3>
+<p class="price">3000 FCFA</p>
+<a class="btn" href="https://wa.me/22676599701?text=Bonjour,%20je%20souhaite%20commander%20Influence%20et%20manipulation%20-%203000%20FCFA">Commander</a>
+</div>
+</div>
+
+</div>
+</section>
 
 <footer>
 <p>© 2026 – Librairie le Cercle des Idées</p>
 </footer>
-
-<script>
-fetch("books.json")
-.then(res => res.json())
-.then(books => {
-
-    const container = document.getElementById("books");
-    const categories = {};
-
-    books.forEach(book => {
-        if(!categories[book.genre]){
-            categories[book.genre] = [];
-        }
-        categories[book.genre].push(book);
-    });
-
-    for(const genre in categories){
-        const section = document.createElement("section");
-        section.innerHTML = `<h2>${genre}</h2><div class="grid"></div>`;
-        const grid = section.querySelector(".grid");
-
-        categories[genre].forEach(book => {
-            const card = document.createElement("div");
-            card.className = "card";
-            card.innerHTML = `
-                <img src="${book.image}" alt="${book.title}">
-                <div class="content">
-                    <h3>${book.title.replaceAll("_"," ")}</h3>
-                    <p class="price">${book.price_sale || "Prix sur demande"} FCFA</p>
-                    <a class="btn" href="https://wa.me/22676599701?text=Bonjour,%20je%20souhaite%20commander%20${book.title}">
-                        Commander
-                    </a>
-                </div>
-            `;
-            grid.appendChild(card);
-        });
-
-        container.appendChild(section);
-    }
-});
-</script>
 
 </body>
 </html>
