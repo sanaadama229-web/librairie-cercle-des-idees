@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "title": "Maimouna",
+        "quantity": 2,
+        "price_cost": 0,
+        "price_sale": 0,
+        "genre": "Romans",
+        "image": "images/maimouna.jpg"
+    },
+    {
+        "id": 2,
+        "title": "ETRANGER ALBERT CAMUS",
+        "quantity": 1,
+        "price_cost": 700,
+        "price_sale": 1050,
+        "genre": "Romans",
+        "image": "images/etranger_albert_camus.jpg"
+    },
+    {
+        "id": 3,
+        "title": "L\u2019aventure Albaraka I",
+        "quantity": 1,
+        "price_cost": 1000,
+        "price_sale": 1500,
+        "genre": "Romans",
+        "image": "images/laventure_albaraka_i.jpg"
+    },
+    {
+        "id": 4,
+        "title": "L\u2019aventure Albaraka II",
+        "quantity": 2,
+        "price_cost": 0,
+        "price_sale": 0,
+        "genre": "Romans",
+        "image": "images/laventure_albaraka_ii.jpg"
+    },
+    {
+        "id": 5,
+        "title": "L\u2019enfant noir",
+        "quantity": 1,
+        "price_cost": 700,
+        "price_sale": 1050,
+        "genre": "Romans",
+        "image": "images/lenfant_noir.jpg"
+    },
+    {
+        "id": 6,
+        "title": "L\u2019essentiel en CM",
+        "quantity": 1,
+        "price_cost": 0,
+        "price_sale": 0,
+        "genre": "Manuels scolaires",
+        "image": "images/lessentiel_en_cm.jpg"
+    },
+    {
+        "id": 7,
+        "title": "Soleil des ind\u00e9pendances",
+        "quantity": 1,
+        "price_cost": 700,
+        "price_sale": 1050,
+        "genre": "Romans",
+        "image": "images/soleil_des_independances.jpg"
+    },
+    {
+        "id": 8,
+        "title": "Cr\u00e9puscule des temps anciens",
+        "quantity": 1,
+        "price_cost": 700,
+        "price_sale": 1050,
+        "genre": "Contes",
+        "image": "images/crepuscule_des_temps_anciens.jpg"
+    },
+    {
+        "id": 9,
+        "title": "Le Petit Prince",
+        "quantity": 1,
+        "price_cost": 1250,
+        "price_sale": 1875,
+        "genre": "Contes",
+        "image": "images/le_petit_prince.jpg"
+    },
+    {
+        "id": 10,
+        "title": "L\u2019art de la guerre",
+        "quantity": 1,
+        "price_cost": 0,
+        "price_sale": 0,
+        "genre": "D\u00e9veloppement personnel",
+        "image": "images/lart_de_la_guerre.jpg"
+    }
+]
