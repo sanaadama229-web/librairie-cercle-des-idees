@@ -2,43 +2,125 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Librairie – Cercle des Idées</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Librairie le Cercle des Idées</title>
+
 <style>
-body{font-family:Arial;background:#f5f5f5;padding:20px}
-.book{background:#fff;padding:15px;margin:10px 0;border-radius:8px}
-button{padding:8px 12px}
-
-.header{text-align:center;margin-bottom:30px}
-.header img{max-width:180px;margin-bottom:10px}
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#f4f6f8;
+}
+header{
+    background:linear-gradient(135deg,#1f2937,#111827);
+    color:white;
+    padding:30px 15px;
+    text-align:center;
+}
+section{
+    padding:25px 15px;
+}
+h2{
+    margin-bottom:15px;
+    border-left:5px solid #25D366;
+    padding-left:10px;
+}
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+    gap:18px;
+}
+.card{
+    background:white;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+.content{
+    padding:15px;
+}
+.price{
+    font-weight:bold;
+    margin:8px 0;
+}
+.btn{
+    display:block;
+    background:#25D366;
+    color:white;
+    text-align:center;
+    padding:10px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+}
+footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
 </style>
-
 </head>
-<body>
-<div class="header">
-  <img src="logo.png" alt="Librairie Le Cercle des Idées">
-  <h1>Librairie – Le Cercle des Idées</h1>
-</div>
 
-<h1>📚 Librairie – Cercle des Idées</h1>
-<div id="books"></div>
+<body>
+
+<header>
+<h1>Librairie le Cercle des Idées</h1>
+<p>Romans • Manuels • Développement personnel</p>
+<p>📞 WhatsApp : +226 76 59 97 01</p>
+</header>
+
+<section id="books"></section>
+
+<footer>
+<p>© 2026 – Librairie le Cercle des Idées</p>
+</footer>
 
 <script>
-fetch('books.json')
-.then(r=>r.json())
-.then(data=>{
-  const c=document.getElementById('books');
-  data.forEach(b=>{
-    const d=document.createElement('div');
-    d.className='book';
-    d.innerHTML=`<h3>${b.title}</h3><p>${b.author||''}</p>
-    <button onclick="order('${b.title}')">Commander</button>`;
-    c.appendChild(d);
-  });
+fetch("books.json")
+.then(res => res.json())
+.then(books => {
+
+    const container = document.getElementById("books");
+    const categories = {};
+
+    books.forEach(book => {
+        if(!categories[book.genre]){
+            categories[book.genre] = [];
+        }
+        categories[book.genre].push(book);
+    });
+
+    for(const genre in categories){
+        const section = document.createElement("section");
+        section.innerHTML = `<h2>${genre}</h2><div class="grid"></div>`;
+        const grid = section.querySelector(".grid");
+
+        categories[genre].forEach(book => {
+            const card = document.createElement("div");
+            card.className = "card";
+            card.innerHTML = `
+                <img src="${book.image}" alt="${book.title}">
+                <div class="content">
+                    <h3>${book.title.replaceAll("_"," ")}</h3>
+                    <p class="price">${book.price_sale || "Prix sur demande"} FCFA</p>
+                    <a class="btn" href="https://wa.me/22676599701?text=Bonjour,%20je%20souhaite%20commander%20${book.title}">
+                        Commander
+                    </a>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        container.appendChild(section);
+    }
 });
-function order(book){
-  const url="https://docs.google.com/forms/d/e/FORM_ID/viewform?usp=pp_url&entry.123456="+encodeURIComponent(book);
-  window.open(url,'_blank');
-}
 </script>
+
 </body>
 </html>
